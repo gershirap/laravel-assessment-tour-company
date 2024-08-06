@@ -1,57 +1,65 @@
-# UncleTech Laravel Assessment
+# Supplyve Laravel Assessment
 
-Imagine that UncleTech was hired to create an online tour booking system. Your job is to develop an API in Laravel that can manage the tours of that company.
+Imagine that you were hired to create an online tour booking system. Your job is to develop a full-stack application in Laravel that can manage the tours of that company.
 
-Below you will find the technical definitions of this API.
+Below you will find the technical definitions of this application.
 
 ## Instructions
 
-- Fork this repository
-- Develop your API
-- When you're done, make a Pull Request of your code here for us.
-- If needed, send details by email to our HR.
+-   Fork this repository
+-   Develop your application
+-   When you're done, make a Pull Request of your code here for us.
 
-### Database schema
+## Database schema
 
-![database-schema.png](database-schema.png)
+| Column Name | Data type | Constraints |
+| ----------- | --------- | ----------- |
+| id          | bigint    | PK          |
+| destination | string    |             |
+| start       | timestamp |             |
+| end         | timestamp |             |
+| price       | float     |             |
+| created_at  | timestamp |             |
+| updated_at  | timestamp |             |
+| deleted_at  | timestamp |             |
 
-### Resource Details
+## Pages/Components
 
-| Method|End-point | Description |
-|-|-|-|
-| GET  | /tours | Return all tours |
-| GET  | /tours/{id} | Return specific tours data |
-| POST  | /tours | Creates new tours |
-| PUT  | /tours/{id} | Update or create specific tours data |
-| DELETE  | /tours/{id} | Delete tours data |
+### Index
 
-#### Filtering
+-   Display table of all available tours
+    -   Don't show tours that have been soft-deleted
+-   Columns are Destination, Start, End, and Price
+    -   Destination text should be clickable, and take you to the Show page for that tour
+    -   Start and End should be displayed in a human-readable format
+    -   Price should be displayed with a $ sign in front
+-   Table should be filterable by Start, End, and Price
+-   Table should be paginated to only show 10 tours at a time
 
-The return all GET request (/tours), should accept filtering options as follow:
+### Show
 
-|Filter|Operator|Route example|
-|-|-|-|
-|price|eq,lte,gte|`/tours?price[eq]=100`|
-|start|eq,lte,gte|`/tours?start[eq]=2020-01-20T00:00:00`|
-|end|eq,lte,gte|`/tours?end[eq]=2020-01-20T00:00:00`|
+-   Destinaton as a header at the top of the page
+-   Editable fields for Start, End, and Price
+-   Delete button (should use soft deletes)
 
-- lte = less than or equal to
-- gte = greater than or equal to
-- eq = equal
+### Seeders
 
-#### Pagination
+-   Create a Seeder that uses a Factory to generate 20 example tours
 
-The return all GET request (/tours), needs to accept pagination as follow:
+## Comments
 
-```
-/tours?limit=20&offset=20
-```
+-   Front-end should be built with [Laravel Blade](https://laravel.com/docs/8.x/blade#main-content) and [Livewire](https://laravel-livewire.com/docs/2.x/quickstart). No need to do anything complex; basic functionality is adequate. The purpose is to demonstrate your familiarity with the framework.
+-   The front end does not need to look pretty. All we are looking for is functional and easily usable interfaces with a reasonable layout.
+-   You may use any pre-built plugins you want.
+-   Part of this evaluation is seeing what kinds of questions you ask when you get stuck or when you need clarification. It's important to see how you work with us even if the final product is not built 100% independently to perfection!
 
-### Comments
+## Extras
 
-- Use laravel validation.
-- Use soft delete trait.
-- Use JSON format.
-- Write  Unit tests for your API is a plus! 
+If you have time, here are some extra features you can include:
 
-Good luck!
+-   Create button on the Index page
+    -   It takes you to the Show page, where you can enter a new Destination, Start, End, and Price
+-   Search bar on the Index page
+    -   Search by Destination
+
+#### Good luck!
