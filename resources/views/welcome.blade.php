@@ -1,9 +1,7 @@
-<html>
-    <head>
-        @livewireStyles
-        <h1>Welcome To Lars Tours</h1>
-    </head>
-    <body>
-        @livewireStyles
-    </body>
-</html>
+@extends('layouts.app')
+
+@section('content')
+<div>
+    <livewire:tours-table/>
+</div>
+@endsection
