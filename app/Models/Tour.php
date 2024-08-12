@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tour extends Model
 {
     use HasFactory, SoftDeletes;
-
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -20,5 +20,15 @@ class Tour extends Model
         'start',
         'end',
         'price'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'start' => 'datetime',
+        'end' => "datetime"
     ];
 }

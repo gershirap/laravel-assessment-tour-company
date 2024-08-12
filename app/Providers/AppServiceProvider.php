@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +28,15 @@ class AppServiceProvider extends ServiceProvider
         Builder::macro('search', function ($field, $string) {
             return $string ? $this->where($field, 'like', '%'.$string.'%') : $this;            
         });
+
+        Blade::directive('readableDateTime', function ($datetime) {
+            return "<?php echo date_format($datetime, 'd M yy'); ?>";
+        });
+
+        Blade::directive('moneyFormat', function ($money) {
+            return "$<?php echo number_format($money, 2); ?>";
+        });
+
+        
     }
 }
