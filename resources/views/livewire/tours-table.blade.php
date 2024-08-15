@@ -37,7 +37,7 @@
         <tbody>
             @foreach($tours as $tour)
                 <tr>
-                    <td class="border px-4 py-2">{{ $tour->destination }}</td>
+                    <td wire:click="edit({{$tour}})" class="border px-4 py-2">{{ $tour->destination }}</td>
                     <td class="border px-4 py-2">@readableDateTime($tour->start)</td>
                     <td class="border px-4 py-2">@readableDateTime($tour->end)</td>
                     <td class="border px-4 py-2">@moneyFormat($tour->price)</td>

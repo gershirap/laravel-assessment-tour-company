@@ -18,7 +18,7 @@ class CreateToursTable extends Migration
             $table->string('destination')->index();
             $table->timestamp('start');
             $table->timestamp('end');
-            $table->float('price', 8, 2);
+            $table->float('price', 4, 2);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -30,11 +30,11 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::directive('readableDateTime', function ($datetime) {
-            return "<?php echo date_format($datetime, 'd M yy'); ?>";
+            return "<?php echo date_format($datetime, 'd M Y'); ?>";
         });
 
         Blade::directive('moneyFormat', function ($money) {
-            return "$<?php echo number_format($money, 2); ?>";
+            return "$<?php echo $money; ?>";
         });
 
         

@@ -5,21 +5,17 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Tour;
 use Livewire\WithPagination;
+use App\Http\Livewire\Traits\WithSorting;
 
 class ToursTable extends Component
 {
-    use WithPagination;
+    use WithPagination, WithSorting;
 
     public $search = '';
 
-    public $sortField;
-    public $sortDirection = 'asc';
-
-    public function sortBy($field) {
-        if ($this->sortField === $field) {
-            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
-        } else $this->sortDirection = 'asc';
-        $this->sortField = $field;
+    public function edit(Tour $tour) 
+    {
+        return redirect()->route('touredit', ['tour' => $tour]);
     }
     
 
